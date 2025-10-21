@@ -2,8 +2,7 @@ function createPassenger() {
     const numberOfPassengers = document.getElementById('passenger').value;
     const container = document.getElementById('passengerDivs');
     container.innerHTML = ''; // Clear previous divs
-    const forfait = 13;
-    const taux = parseFloat(document.getElementById('taux').value) || 1.22;
+
 
     for (let i = 0; i < numberOfPassengers; i++) {
         const div = document.createElement('div');
@@ -25,7 +24,6 @@ function createPassenger() {
         //Nuit / Week-end / Férié
         const nuitInput = document.createElement('input');
         nuitInput.type = 'checkbox';
-        nuitInput.onclick = calculate()
         const nuitLabel = document.createElement('label');
         nuitLabel.textContent = 'Nuit / Week-end / Férié';
         div.appendChild(nuitInput);
@@ -52,11 +50,6 @@ function createPassenger() {
         div.appendChild(metropolitaineLabel);
 
         div.appendChild(document.createElement('br'));
-
-        //Sous-total :
-        let sousTotal = forfait + kilometrage + checkboxForfaitAireMetropolitaine; // Initialize total
-        const sousTotal = document.createElement('label')
-        sousTotal.textContent = 'Sous-total : ';
 
         container.appendChild(div);
     }
