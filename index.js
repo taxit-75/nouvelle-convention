@@ -53,13 +53,7 @@ function createPassenger() {
         div.appendChild(document.createElement('br'));
 
         //sous total
-        const kilometrage = (distanceInput - 4) * taux || 0;
-        const ForfaitAireMetropolitaine = metropolitaineInput.checked ? 15 : 0;
-        let sousTotal = forfait + kilometrage + ForfaitAireMetropolitaine;
-
-        const sousTotalLabel = document.createElement('label');
-        sousTotalLabel.textContent = `Sous-total : ${sousTotal.toFixed(2)} €`;
-        div.appendChild(sousTotalLabel);
+        let souTotal = 
 
         container.appendChild(div);
     }
