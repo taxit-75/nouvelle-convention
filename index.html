@@ -54,21 +54,24 @@
 
                 if (hospitalisation[index].checked && !nuit[index].checked) {
                     if (distanceValue >= 50) {
-                        subtotal *= 1.5;
+                        // subtotal *= 1.5;
+                        const additionalChargeKilometrage = distanceValue * 0.50; // Add 50% for kilometrage over 50                        
                     } else {
-                        subtotal *= 1.25;
+                        // subtotal *= 1.25;
+                        const additionalChargeKilometrage = distanceValue * 0.25; // Add 50% for kilometrage over 50                        
                     }
+                    subtotal += additionalChargeKilometrage;
                 }
 
                 if (numberOfPassengers == 2) {
                     subtotal *= 0.77; // Reduce subtotal by 23%
                 }
-                else if  (numberOfPassengers == 3) {
+                else if (numberOfPassengers == 3) {
                     subtotal *= 0.65; // Reduce subtotal by 35%
                 }
-                else if  (numberOfPassengers >= 4) {
+                else if (numberOfPassengers >= 4) {
                     subtotal *= 0.63; // Reduce subtotal by 35%
-                } 
+                }
 
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
                 total += subtotal;
