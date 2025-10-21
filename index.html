@@ -26,19 +26,9 @@
                 const checkboxNuit = document.createElement('input');
                 checkboxNuit.type = 'checkbox';
                 checkboxNuit.textContent = 'Nuit / Week-end / Férié';                
-                div.appendChild(checkboxNuit);
+                div.appendChild(checkbox);                
                 
                 div.appendChild(document.createElement('br'));
-
-                // Retour à vide (hospitalisation)
-                const checkboxHospitalisation = document.createElement('input');
-                checkboxHospitalisation.type = 'checkbox';
-                checkboxHospitalisation.textContent = 'Retour à vide (hospitalisation)';                
-                div.appendChild(checkboxHospitalisation);
-
-                div.appendChild(document.createElement('br'));
-
-                div.appendChild(lineBreak2);
                 
                 container.appendChild(div);
             }
