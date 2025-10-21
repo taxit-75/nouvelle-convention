@@ -6,10 +6,34 @@
     <title>Calculateur de Checkbox</title>
     <script>
         function calculate() {
-            const checkbox1 = document.getElementById('checkbox1').checked ? 10 : 0;
-            const checkbox2 = document.getElementById('checkbox2').checked ? 20 : 0;
-            const checkbox3 = document.getElementById('checkbox3').checked ? 30 : 0;
-            const total = checkbox1 + checkbox2 + checkbox3;
+            const forfait = 13;
+
+            const kilometrage = (document.getElementById('kilometrage').value -4) * 1.13 || 0;
+
+            const checkboxForfaitAireMetropolitaine = document.getElementById('metropolitaine').checked ? 15 : 0;
+
+            // const checkboxNuit = document.getElementById('nuit').checked ? 0.5 * (kilometrage - 4) * 1.13 : 0; // 50% if checked 
+            
+            let total = forfait + kilometrage + checkboxForfaitAireMetropolitaine; // Initialize total
+
+            if (document.getElementById('nuit').checked) {
+                const additionalChargeNuit = total * 0.5; // Add 50% to total
+                total += additionalChargeNuit;
+            }
+
+            // const checkboxRetour = document.getElementById('retour').checked ? 20 : 0;
+            
+            if (document.getElementById('retour').checked) {
+                const additionalChargeRetour = kilometrage * 0.25; // Add 50% to total
+                total += additionalChargeRetour;
+            }
+
+            
+            
+            
+            // const total = forfait + (kilometrage - 4) * 1.13 + checkboxNuit + checkbox2 + checkbox3; // Include checkboxNuit in total
+            
+            // const total = forfait + (kilometrage - 4) * 1.13
             document.getElementById('result').innerText = 'Total: ' + total;
         }
     </script>
@@ -17,13 +41,16 @@
 <body>
     <h1>Calculateur de Checkbox</h1>
     <label>
-        <input type="checkbox" id="checkbox1" onclick="calculate()"> Option 1 (10)
+        Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
+    </label><br>    
+    <label>
+        <input type="checkbox" id="nuit" onclick="calculate()"> Nuit / Week-end / Férié
     </label><br>
     <label>
-        <input type="checkbox" id="checkbox2" onclick="calculate()"> Option 2 (20)
+        <input type="checkbox" id="retour" onclick="calculate()"> Retour à vide (hospitalisation)
     </label><br>
     <label>
-        <input type="checkbox" id="checkbox3" onclick="calculate()"> Option 3 (30)
+        <input type="checkbox" id="metropolitaine" onclick="calculate()"> Forfait aire métropolitaine (+15 €)
     </label><br>
     <h2 id="result">Total: 0</h2>
 </body>
