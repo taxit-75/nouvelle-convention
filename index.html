@@ -70,10 +70,12 @@
                     subtotal *= 0.63; // Reduce subtotal by 37%
                 }
 
+                subtotal = subtotal.toFixed(2)
+
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
                 total += subtotal;
             });
-
+            total = total.toFixed(2)
             document.getElementById('total').innerText = `Total: ${total}`;
         }
     </script>
@@ -81,7 +83,7 @@
 
 <body>
     <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
-    <h2>version 1.0.11</h2>
+    <h2>version 1.0.12</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
@@ -90,7 +92,7 @@
             required>
     </label><br>
     <label>
-        Nombre de passagers : <input type="number" id="passengerCount" value="1" min="1" max="8"
+        Nombre de passagers : <input type="number" id="passengerCount" value="0" min="1" max="8"
             oninput="generatePassengerFields()" required>
     </label><br>
     <div id="passengerContainer"></div>
