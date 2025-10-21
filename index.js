@@ -2,7 +2,8 @@ function createPassenger() {
     const numberOfPassengers = document.getElementById('passenger').value;
     const container = document.getElementById('passengerDivs');
     container.innerHTML = ''; // Clear previous divs
-
+    const forfait = 13;
+    const taux = parseFloat(document.getElementById('taux').value) || 1.22;
 
     for (let i = 0; i < numberOfPassengers; i++) {
         const div = document.createElement('div');
@@ -50,6 +51,15 @@ function createPassenger() {
         div.appendChild(metropolitaineLabel);
 
         div.appendChild(document.createElement('br'));
+
+        //sous total
+        const kilometrage = (distanceInput - 4) * taux || 0;
+        const ForfaitAireMetropolitaine = metropolitaineInput.checked ? 15 : 0;
+        let sousTotal = forfait + kilometrage + ForfaitAireMetropolitaine;
+
+        const sousTotalLabel = document.createElement('label');
+        sousTotalLabel.textContent = `Sous-total : ${sousTotal.toFixed(2)} €`;
+        div.appendChild(sousTotalLabel);
 
         container.appendChild(div);
     }
