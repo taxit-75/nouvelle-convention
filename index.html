@@ -45,6 +45,14 @@
                 hospitalisationLabel.textContent = 'Retour à vide (hospitalisation)';
                 div.appendChild(hospitalisationInput);
                 div.appendChild(hospitalisationLabel);  
+
+                //Forfait aire métropolitaine (+15 €)
+                const metropolitaineInput = document.createElement('input');
+                metropolitaineInput.type = 'checkbox';
+                const metropolitaineLabel = document.createElement('label');                
+                metropolitaineLabel.textContent = 'Forfait aire métropolitaine (+15 €)';
+                div.appendChild(metropolitaineInput);
+                div.appendChild(metropolitaineLabel);  
                 
                 container.appendChild(div);
             }
