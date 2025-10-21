@@ -17,6 +17,8 @@
         for (let i = 0; i < numberOfPassengers; i++) {
             const passengerBody = document.createElement('div');
             passengerBody.innerHTML = `<h3>Passager ${i + 1}</h3>`;
+            
+            
             bodyContainer.appendChild(passengerBody);
         }
 
