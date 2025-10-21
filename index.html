@@ -1,57 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur de Checkbox</title>
-    <script src="calculate.js"></script> <!-- External JavaScript file -->
-    </script>
-</head>
+    <title>Calculateur de Passagers</title>
+    <script>
+        function generatePassengerFields() {
+            const numberOfPassengers = document.getElementById('passengerCount').value;
+            const container = document.getElementById('passengerContainer');
+            container.innerHTML = ''; // Clear previous fields
 
-<script>
-    function createPassengerBodies() {
-        const numberOfPassengers = document.getElementById('numberOfPassengers').value;
-        const bodyContainer = document.createElement('div');
-
-        for (let i = 0; i < numberOfPassengers; i++) {
-            const passengerBody = document.createElement('div');
-            passengerBody.innerHTML = `<h3>Passager ${i + 1}</h3>`;
-            
-            
-            bodyContainer.appendChild(passengerBody);
+            for (let i = 0; i < numberOfPassengers; i++) {
+                const div = document.createElement('div');
+                div.innerHTML = `
+                    <h3>Passager ${i + 1}</h3>
+                    <input type="number" class="champs1" placeholder="Champ 1" />
+                    <input type="number" class="champs2" placeholder="Champ 2" />
+                    <span class="subtotal">Sous-total: 0</span>
+                `;
+                container.appendChild(div);
+            }
         }
 
-        document.body.appendChild(bodyContainer);
-    }
+        function calculateSubtotals() {
+            const champs1 = document.querySelectorAll('.champs1');
+            const champs2 = document.querySelectorAll('.champs2');
+            const subtotals = document.querySelectorAll('.subtotal');
+            let total = 0;
 
-    document.getElementById('numberOfPassengers').addEventListener('change', createPassengerBodies);
-</script>
+            champs1.forEach((champ1, index) => {
+                const value1 = parseFloat(champ1.value) || 0;
+                const value2 = parseFloat(champs2[index].value) || 0;
+                const subtotal = value1 + value2;
+                subtotals[index].innerText = `Sous-total: ${subtotal}`;
+                total += subtotal;
+            });
 
+            document.getElementById('total').innerText = `Total: ${total}`;
+        }
+    </script>
+</head>
 <body>
-    <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
-    <div>
-        <label>
-            Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
-        </label><br>
-        <label>
-            Nombre de passagers : <input type="number" id="numberOfPassengers" value="1" min="1" max="8"
-                onchange="calculate()" required>
-        </label><br>
-    </div>
-    <div style="background-color: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-        <label>
-            Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
-        </label><br>
-        <label>
-            <input type="checkbox" id="nuit" onclick="calculate()"> Nuit / Week-end / Férié
-        </label><br>
-        <label>
-            <input type="checkbox" id="retour" onclick="calculate()"> Retour à vide (hospitalisation)
-        </label><br>
-        <label>
-            <input type="checkbox" id="metropolitaine" onclick="calculate()"> Forfait aire métropolitaine (+15 €)
-        </label><br>
-    </div>
-    <h2 id="result">Total: 0</h2>
+    <h1>Calculateur de Passagers</h1>
+    <label for="passengerCount">Nombre de passagers:</label>
+    <input type="number" id="passengerCount" oninput="generatePassengerFields()" />
+    <div id="passengerContainer"></div>
+    <button onclick="calculateSubtotals()">Calculer les sous-totaux</button>
+    <h2 id="total">Total: 0</h2>
 </body>
+</html>

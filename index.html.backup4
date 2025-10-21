@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Checkbox</title>
+    <script src="calculate.js"></script> <!-- External JavaScript file -->
+    </script>
+</head>
+
+<body>
+    <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
+    <div>
+        <label>
+            Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
+        </label><br>
+        <label>
+            Nombre de passagers : <input type="number" id="numberOfPassengers" value="1" min="1" max="8"
+                onchange="calculate()" required>
+        </label><br>
+    </div>
+    <div style="background-color: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <label>
+            Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
+        </label><br>
+        <label>
+            <input type="checkbox" id="nuit" onclick="calculate()"> Nuit / Week-end / Férié
+        </label><br>
+        <label>
+            <input type="checkbox" id="retour" onclick="calculate()"> Retour à vide (hospitalisation)
+        </label><br>
+        <label>
+            <input type="checkbox" id="metropolitaine" onclick="calculate()"> Forfait aire métropolitaine (+15 €)
+        </label><br>
+    </div>
+    <h2 id="result">Total: 0</h2>
+</body>
