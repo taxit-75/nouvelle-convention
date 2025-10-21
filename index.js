@@ -105,5 +105,5 @@ function calculate() {
 
     total = total.toFixed(2); // Round total to 2 decimal places
 
-    document.getElementById('result').innerText = 'Total: ' + total;
+    document.getElementById('subResult').innerText = 'Total: ' + total;
 }
