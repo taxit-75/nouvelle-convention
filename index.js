@@ -1,109 +1,72 @@
-function createPassenger() {
-    const taux = parseFloat(document.getElementById('taux').value) || 1.22;
-    const forfait = 13;
-    const numberOfPassengers = document.getElementById('passenger').value;
-    const container = document.getElementById('passengerDivs');
-    container.innerHTML = ''; // Clear previous divs
+function generatePassengerFields() {
+    const numberOfPassengers = document.getElementById('passengerCount').value;
+    const container = document.getElementById('passengerContainer');
+    container.innerHTML = ''; // Clear previous fields
 
     for (let i = 0; i < numberOfPassengers; i++) {
         const div = document.createElement('div');
-        div.style = "background-color: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"
-        div.textContent = `Passager ${i + 1}`;
-
-        div.appendChild(document.createElement('br'));
-
-        //Distance (en km) :
-        const distanceLabel = document.createElement('label');
-        distanceLabel.textContent = 'Distance (en km) : ';
-        const distanceInput = document.createElement('input');
-        distanceInput.type = 'number';
-        div.appendChild(distanceLabel);
-        div.appendChild(distanceInput);
-
-        div.appendChild(document.createElement('br'));
-
-        //Nuit / Week-end / Férié
-        const nuitInput = document.createElement('input');
-        nuitInput.type = 'checkbox';
-        const nuitLabel = document.createElement('label');
-        nuitLabel.textContent = 'Nuit / Week-end / Férié';
-        div.appendChild(nuitInput);
-        div.appendChild(nuitLabel);
-
-        div.appendChild(document.createElement('br'));
-
-        //Retour à vide (hospitalisation)
-        const hospitalisationInput = document.createElement('input');
-        hospitalisationInput.type = 'checkbox';
-        const hospitalisationLabel = document.createElement('label');
-        hospitalisationLabel.textContent = 'Retour à vide (hospitalisation)';
-        div.appendChild(hospitalisationInput);
-        div.appendChild(hospitalisationLabel);
-
-        div.appendChild(document.createElement('br'));
-
-        //Forfait aire métropolitaine (+15 €)
-        const metropolitaineInput = document.createElement('input');
-        metropolitaineInput.type = 'checkbox';
-        const metropolitaineLabel = document.createElement('label');
-        metropolitaineLabel.textContent = 'Forfait aire métropolitaine (+15 €)';
-        div.appendChild(metropolitaineInput);
-        div.appendChild(metropolitaineLabel);
-
-        div.appendChild(document.createElement('br'));
-
-        //sous total
-        const subResult = document.createElement('header');
-        subResult.textContent = 'sous total: 0'
-        div.appendChild(subResult);
-
+        div.innerHTML = `
+            <h3>Passager ${i + 1}</h3>
+            <input type="number" class="distances" onchange="calculateSubtotals()" placeholder="Distance (en km)" /><br>
+            <label>
+                <input type="checkbox" class="nuit" onclick="calculateSubtotals()"> Nuit / Week-end / Férié
+            </label><br>
+            <label>
+                <input type="checkbox" class="hospitalisation" onclick="calculateSubtotals()"> Retour à vide (hospitalisation)
+            </label><br>
+            <label>
+                <input type="checkbox" class="metropolitaine" onclick="calculateSubtotals()"> Forfait aire métropolitaine (+15 €)
+            </label><br>                    
+            <span class="subtotal">Sous-total: 0</span>
+        `;
         container.appendChild(div);
     }
 }
 
-function calculate() {
-    const forfait = 13;
-
+function calculateSubtotals() {
+    const distances = document.querySelectorAll('.distances');
+    const nuit = document.querySelectorAll('.nuit');
+    const hospitalisation = document.querySelectorAll('.hospitalisation');
+    const metropolitaine = document.querySelectorAll('.metropolitaine');
+    const subtotals = document.querySelectorAll('.subtotal');
     const taux = parseFloat(document.getElementById('taux').value) || 1.22;
+    const forfait = parseFloat(document.getElementById('forfait').value) || 13;
+    const numberOfPassengers = document.getElementById('passengerCount').value;
 
-    const kilometrage = (document.getElementById('distanceInput').value - 4) * taux || 0;
+    let total = 0;
 
-    const checkboxForfaitAireMetropolitaine = document.getElementById('metropolitaineInput').checked ? 15 : 0;
+    distances.forEach((distance, index) => {
+        const distanceValue = (parseFloat(distance.value) - 4) * taux || 0;
+        const metropolitaineValue = metropolitaine[index].checked ? 15 : 0;
 
-    let total = forfait + kilometrage + checkboxForfaitAireMetropolitaine; // Initialize total
-
-    if (document.getElementById('nuitInput').checked) {
-        const additionalChargeNuit = total * 0.5; // Add 50% to total
-        total += additionalChargeNuit;
-    }
-
-    if (document.getElementById('hospitalisationInput').checked && !document.getElementById('nuitInput').checked) {
-        if (kilometrage >= 50) {
-            const additionalChargeKilometrage = kilometrage * 0.50; // Add 50% for kilometrage over 50
-            total += additionalChargeKilometrage;
+        let subtotal = forfait + distanceValue + metropolitaineValue;
+        if (nuit[index].checked) {
+            subtotal *= 1.5; // Add 50% if "nuit" is checked
         }
-        else {
-            const additionalChargeRetour = kilometrage * 0.25; // Add 25% for kilometrage under 50
-            total += additionalChargeRetour;
+
+        if (hospitalisation[index].checked && !nuit[index].checked) {
+            if (distanceValue >= 50) {
+                subtotal += 0.5 * distanceValue; // Add 50% of distanceValue
+            } else {
+                subtotal += 0.25 * distanceValue; // Add 25% of distanceValue
+            }
         }
-    }
 
-    const numberOfPassengers = parseInt(document.getElementById('numberOfPassengers').value);
+        if (numberOfPassengers == 2) {
+            subtotal *= 0.77; // Reduce subtotal by 23%
+        }
+        else if (numberOfPassengers == 3) {
+            subtotal *= 0.65; // Reduce subtotal by 35%
+        }
+        else if (numberOfPassengers >= 4) {
+            subtotal *= 0.63; // Reduce subtotal by 37%
+        }
 
-    if (numberOfPassengers === 2) {
-        const reduction = total * 0.23; // 23% reduction for 2 passengers 
-        total -= reduction;
-    }
-    else if (numberOfPassengers === 3) {
-        const reduction = total * 0.35; // 35% reduction for 3 passengers
-        total -= reduction;
-    }
-    else if (numberOfPassengers >= 4) {
-        const reduction = total * 0.37; // 37% reduction for 4 or more passengers
-        total -= reduction;
-    }
+        subtotal = subtotal.toFixed(2)
 
-    total = total.toFixed(2); // Round total to 2 decimal places
-
-    document.getElementById('subResult').innerText = 'Total: ' + total;
+        subtotals[index].innerText = `Sous-total: ${subtotal}`;
+        total += subtotal;
+    });
+    
+    document.getElementById('total').innerText = `Total: ${total}`;
 }
