@@ -37,7 +37,23 @@
             // else if (numberOfPassengers >= 4) {
             //     const reduction = total * 0.37; // 37% reduction for 4 or more passengers
             //     total -= reduction;
-            // }            
+            // }    
+            
+            const numberOfPassengers = parseInt(document.getElementById('numberOfPassengers').value);
+            
+            if (numberOfPassengers === 2) {
+                const reduction = total * 0.23; // 23% reduction for 2 passengers 
+                total -= reduction;
+            }
+            else if (numberOfPassengers === 3) {
+                const reduction = total * 0.35; // 35% reduction for 3 passengers
+                total -= reduction;
+            }
+            else if (numberOfPassengers >= 4) {
+                const reduction = total * 0.37; // 37% reduction for 4 or more passengers
+                total -= reduction;
+            }    
+                    
 
             total = total.toFixed(2); // Round total to 2 decimal places
             
@@ -48,7 +64,7 @@
 <body>
     <h1>Calculateur de Checkbox</h1>
     <label>
-        Nombre de passagers : <input type="number" id="numberOfPassengers">
+        Nombre de passagers : <input type="number" id="numberOfPassengers" min="1" max="8" required>
     </label><br>
     <label>
         Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
