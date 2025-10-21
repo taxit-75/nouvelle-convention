@@ -14,7 +14,7 @@
                 const div = document.createElement('div');
                 div.innerHTML = `
                     <h3>Passager ${i + 1}</h3>
-                    <input type="number" class="champs1" placeholder="Champ 1" />
+                    <input type="number" class="distances" placeholder="Champ 1" />
                     <input type="number" class="champs2" placeholder="Champ 2" />
                     <span class="subtotal">Sous-total: 0</span>
                 `;
@@ -23,13 +23,13 @@
         }
 
         function calculateSubtotals() {
-            const champs1 = document.querySelectorAll('.champs1');
+            const distances = document.querySelectorAll('.distances');
             const champs2 = document.querySelectorAll('.champs2');
             const subtotals = document.querySelectorAll('.subtotal');
             let total = 0;
 
-            champs1.forEach((champ1, index) => {
-                const value1 = parseFloat(champ1.value) || 0;
+            distances.forEach((distance, index) => {
+                const value1 = parseFloat(distance.value) || 0;
                 const value2 = parseFloat(champs2[index].value) || 0;
                 const subtotal = value1 + value2;
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
@@ -42,7 +42,7 @@
 </head>
 <body>
     <h1>Calculateur de Passagers</h1>
-    <h2>version 1.0.0</h2>
+    <h2>version 1.0.1</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
     </label><br>
