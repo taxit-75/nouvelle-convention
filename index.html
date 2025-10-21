@@ -13,6 +13,13 @@
             for (let i = 0; i < numberOfPassengers; i++) {
                 const div = document.createElement('div');
                 div.textContent = `Passager ${i + 1}`;
+                
+                const numberInput = document.createElement('input');
+                numberInput.type = 'number';
+                numberInput.placeholder = 'Entrez un nombre';
+                div.appendChild(numberInput);
+                
+                
                 container.appendChild(div);
             }
         }
