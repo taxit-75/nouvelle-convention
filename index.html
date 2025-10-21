@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur de Passagers</title>
+    <title>Simulateur Taxi Conventionné - Future Convention 2025-2029</title>
     <script>
         function generatePassengerFields() {
             const numberOfPassengers = document.getElementById('passengerCount').value;
@@ -54,11 +54,11 @@
 
                 if (hospitalisation[index].checked && !nuit[index].checked) {
                     if (distanceValue >= 50) {
-                        // subtotal *= 1.5;
-                        const additionalChargeKilometrage = distanceValue * 0.50; // Add 50% for kilometrage over 50                        
+                        const additionalChargeKilometrage = (distanceValue - 50) * 0.50; // Add 25% for kilometrage over 50
+                                                
                     } else {
                         // subtotal *= 1.25;
-                        const additionalChargeKilometrage = distanceValue * 0.25; // Add 50% for kilometrage over 50                        
+                        const additionalChargeKilometrage = (distanceValue - 50) * 0.25; // Add 25% for kilometrage under 50                        
                     }
                     subtotal += additionalChargeKilometrage;
                 }
@@ -83,7 +83,7 @@
 </head>
 
 <body>
-    <h1>Calculateur de Passagers</h1>
+    <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
     <h2>version 1.0.10</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
