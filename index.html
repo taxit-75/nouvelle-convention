@@ -31,7 +31,7 @@
                     const additionalChargeRetour = kilometrage * 0.25; // Add 25% for kilometrage under 50
                     total += additionalChargeRetour;
                 }
-            }             
+            }
 
             const numberOfPassengers = parseInt(document.getElementById('numberOfPassengers').value);
 
@@ -64,17 +64,19 @@
         Nombre de passagers : <input type="number" id="numberOfPassengers" min="1" max="8" onchange="calculate()"
             required>
     </label><br>
-    <label>
-        Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
-    </label><br>
-    <label>
-        <input type="checkbox" id="nuit" onclick="calculate()"> Nuit / Week-end / Férié
-    </label><br>
-    <label>
-        <input type="checkbox" id="retour" onclick="calculate()"> Retour à vide (hospitalisation)
-    </label><br>
-    <label>
-        <input type="checkbox" id="metropolitaine" onclick="calculate()"> Forfait aire métropolitaine (+15 €)
-    </label><br>
+    <div style="background-color: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+        <label>
+            Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
+        </label><br>
+        <label>
+            <input type="checkbox" id="nuit" onclick="calculate()"> Nuit / Week-end / Férié
+        </label><br>
+        <label>
+            <input type="checkbox" id="retour" onclick="calculate()"> Retour à vide (hospitalisation)
+        </label><br>
+        <label>
+            <input type="checkbox" id="metropolitaine" onclick="calculate()"> Forfait aire métropolitaine (+15 €)
+        </label><br>
+    </div>
     <h2 id="result">Total: 0</h2>
 </body>
