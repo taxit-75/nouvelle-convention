@@ -25,11 +25,11 @@
                     <h3>Passager ${i + 1}</h3>
                     
                     <label>
-                        Distance1 (en km): <input type="number" id="kilometrage1" onchange="calculateSubtotals()">
+                        Distance1 (en km): <input type="number" class="champs1"">
                     </label><br>
 
                     <label>
-                        Distance2 (en km): <input type="number" id="kilometrage2" onchange="calculateSubtotals()">
+                        Distance2 (en km): <input type="number" class="champs2"">
                     </label><br>
 
                     <span class="subtotal">Sous-total: 0</span>
@@ -39,17 +39,17 @@
         }
 
         function calculateSubtotals() {
-            // const champs1 = document.querySelectorAll('.champs1');
-            // const champs2 = document.querySelectorAll('.champs2');
-            const kilometrage1 = document.getElementById('kilometrage1')
-            const kilometrage2 = document.getElementById('kilometrage2')
+            const champs1 = document.querySelectorAll('.champs1');
+            const champs2 = document.querySelectorAll('.champs2');
+            // const kilometrage1 = document.getElementById('kilometrage1')
+            // const kilometrage2 = document.getElementById('kilometrage2')
             
             const subtotals = document.querySelectorAll('.subtotal');
             let total = 0;
 
-            kilometrage1.forEach((champ1, index) => {
-                const value1 = parseFloat(kilometrage1.value) || 0;
-                const value2 = parseFloat(kilometrage2[index].value) || 0;
+            champs1.forEach((champ1, index) => {
+                const value1 = parseFloat(champs1.value) || 0;
+                const value2 = parseFloat(champs2[index].value) || 0;
                 const subtotal = value1 + value2;
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
                 total += subtotal;
@@ -61,7 +61,7 @@
 </head>
 <body>
     <h1>Calculateur de Passagers</h1>
-    <h2>version 1.0.0</h2>
+    <h2>version 1.0.1</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
     </label><br>
