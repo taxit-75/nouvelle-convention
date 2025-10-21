@@ -20,7 +20,7 @@
                         <input type="checkbox" class="nuit" onclick="calculateSubtotals()"> Nuit / Week-end / Férié
                     </label><br>
                     <label>
-                        <input type="checkbox" class="retour" onclick="calculateSubtotals()"> Retour à vide (hospitalisation)
+                        <input type="checkbox" class="hospitalisation" onclick="calculateSubtotals()"> Retour à vide (hospitalisation)
                     </label><br>
                     <label>
                         <input type="checkbox" class="metropolitaine" onclick="calculateSubtotals()"> Forfait aire métropolitaine (+15 €)
@@ -33,6 +33,10 @@
 
         function calculateSubtotals() {
             const distances = document.querySelectorAll('.distances');
+
+            const nuit = document.querySelectorAll('.nuit');
+
+            const hospitalisation = document.querySelectorAll('.hospitalisation');
 
             const metropolitaine = document.querySelectorAll('.metropolitaine');
 
@@ -49,6 +53,11 @@
 
                 const subtotal = forfait + distanceValue + metropolitaineValue;
 
+                if (nuit[index].checked) {
+                    const additionalChargeNuit = subtotal * 0.5; // Add 50% to total
+                    subtotal += additionalChargeNuit;
+                }
+
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
 
                 total += subtotal;
@@ -61,12 +70,13 @@
 
 <body>
     <h1>Calculateur de Passagers</h1>
-    <h2>version 1.0.5</h2>
+    <h2>version 1.0.6</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
     <label>
-        Forfait : <input type="number" id="forfait" value="13" min="1" max="20" onchange="calculateSubtotals()" required>
+        Forfait : <input type="number" id="forfait" value="13" min="1" max="20" onchange="calculateSubtotals()"
+            required>
     </label><br>
     <label>
         Nombre de passagers : <input type="number" id="passengerCount" value="1" min="1" max="8"
