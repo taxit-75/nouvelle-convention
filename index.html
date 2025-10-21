@@ -31,21 +31,7 @@
                     const additionalChargeRetour = kilometrage * 0.25; // Add 25% for kilometrage under 50
                     total += additionalChargeRetour;
                 }
-            }
-            // const numberOfPassengers = parseInt(document.getElementById('numberOfPassengers').value);
-
-            // if (numberOfPassengers = 2) {
-            //     const reduction = total * 0.23; // 23% reduction for 2 passengers 
-            //     total -= reduction;
-            // }
-            // else if (numberOfPassengers = 3) {
-            //     const reduction = total * 0.35; // 35% reduction for 3 passengers
-            //     total -= reduction;
-            // }
-            // else if (numberOfPassengers >= 4) {
-            //     const reduction = total * 0.37; // 37% reduction for 4 or more passengers
-            //     total -= reduction;
-            // }    
+            }             
 
             const numberOfPassengers = parseInt(document.getElementById('numberOfPassengers').value);
 
@@ -61,7 +47,6 @@
                 const reduction = total * 0.37; // 37% reduction for 4 or more passengers
                 total -= reduction;
             }
-
 
             total = total.toFixed(2); // Round total to 2 decimal places
 
