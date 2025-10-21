@@ -64,7 +64,7 @@
 <body>
     <h1>Calculateur de Checkbox</h1>
     <label>
-        Nombre de passagers : <input type="number" id="numberOfPassengers" min="1" max="8" required>
+        Nombre de passagers : <input type="number" id="numberOfPassengers" min="1" max="8" onchange="calculate()" required >
     </label><br>
     <label>
         Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
