@@ -22,14 +22,16 @@
     <main>
         <section>
             <!-- <h2>Réservez votre taxi</h2> -->
-            <form id="reservation-form">                
-                <label>
-                    Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
-                </label><br>
-                <label>
-                    Nombre de passagers : <input type="number" id="numberOfPassengers" value="1" min="1" max="8" onchange="calculate()" required>
-                </label><br>
-                
+            <form id="reservation-form">
+                <label for="department">Département:</label>
+                <select id="department" name="department" required>
+                    <option value="01">Ain</option>
+                    <option value="02">Aisne</option>
+                    <option value="03">Allier</option>
+                </select>
+                <br>
+                <label for="passengers">Nombre de passagers:</label>
+                <input type="number" id="passengers" name="passengers" min="1" required>
 
                 <!-- <button type="button" style="background-color: blue; color: white;">Générer les formulaires</button> -->
 
@@ -65,7 +67,7 @@
                 <button type="button" style="background-color: blue; color: white;">Calculer</button>
                 
 
-                <!-- <label for="name">Nom:</label>
+                <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" required>
 
                 <label for="pickup">Lieu de prise en charge:</label>
@@ -80,7 +82,7 @@
                 <label for="time">Heure:</label>
                 <input type="time" id="time" name="time" required>
 
-                <button type="submit">Réserver</button> -->
+                <button type="submit">Réserver</button>
             </form>
         </section>
     </main>
