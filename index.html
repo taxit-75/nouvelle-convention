@@ -11,14 +11,8 @@
 
 <body>
     <h1>Formulaire de Passagers</h1>
-    <label>
-        Taux : <input type="number" id="taux" value="1.22" min="1" max="2" required>
-    </label><br>
-    <label>
-        Nombre de passagers : <input type="number" id="numberOfPassengers" value="1" min="1" max="8" required onchange="createPassenger()">
-    </label><br>
-    // <label for="passenger">Nombre de passagers:</label>
-    // <input type="number" id="passenger" min="1" max="8" onchange="createPassenger()">
+    <label for="passenger">Nombre de passagers:</label>
+    <input type="number" id="passenger" min="1" max="8" onchange="createPassenger()">
     <div id="passengerDivs"></div>
 </body>
 
