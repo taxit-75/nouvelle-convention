@@ -62,11 +62,9 @@ function calculateSubtotals() {
             subtotal *= 0.63; // Reduce subtotal by 37%
         }
 
-        subtotal = subtotal.toFixed(2)
-
         subtotals[index].innerText = `Sous-total: ${subtotal}`;
         total += subtotal;
     });
     
-    document.getElementById('total').innerText = `Total: ${total}`;
+    document.getElementById('total').innerText = `Total: ${total.toFixed(2)}`;
 }
