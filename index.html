@@ -15,7 +15,14 @@
                 const div = document.createElement('div');
                 div.innerHTML = `
                     <h3>Passager ${i + 1}</h3>
-                    <input type="number" class="champs1" placeholder="Distance (en km)" /><br>
+                    <label>
+                        Nombre de passagers1 : <input type="number" id="numberOfPassengers1" value="1" min="1" max="8"
+                            onchange="calculateSubtotals()" required>
+                    </label><br>
+                    <label>
+                        Nombre de passagers2 : <input type="number" id="numberOfPassengers2" value="1" min="1" max="8"
+                            onchange="calculateSubtotals()" required>
+                    </label><br>
                     <label>
                         <input type="checkbox" id="nuit" onclick="calculateSubtotals()"> Nuit / Week-end / Férié
                     </label><br>
@@ -32,8 +39,9 @@
         }
 
         function calculateSubtotals() {
-            const champs1 = document.querySelectorAll('.champs1');
-            const champs2 = document.querySelectorAll('.champs2');
+            const champs1 = document.getElementById('numberOfPassengers1');
+            const champs2 = document.getElementById('numberOfPassengers2');
+            
             const subtotals = document.querySelectorAll('.subtotal');
             let total = 0;
 
