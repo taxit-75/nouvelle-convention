@@ -16,7 +16,6 @@
                 div.style = "background-color: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;"
                 div.textContent = `Passager ${i + 1}`;     
                            
-                div.appendChild(document.createElement('br'));          
                 const numberInput = document.createElement('input');
                 numberInput.type = 'number';
                 numberInput.placeholder = 'Entrez un nombre';
@@ -24,14 +23,13 @@
                 
                 const lineBreak1 = document.createElement('br');
                 div.appendChild(lineBreak1);
-                div.appendChild(document.createElement('br'));
-
-                const checkbox = document.createElement('input');
-                checkbox.textContent = 'checkbox 1';
-                checkbox.type = 'checkbox';
-                div.appendChild(checkbox);               
                 
-                div.appendChild(document.createElement('br'));
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                div.appendChild(checkbox);
+                
+                const lineBreak2 = document.createElement('br');
+                div.appendChild(lineBreak2);
                 
                 container.appendChild(div);
             }
