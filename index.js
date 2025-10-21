@@ -54,8 +54,11 @@ function createPassenger() {
 
         //sous total
         const subTotalLabel = document.createElement('label');
-        subTotalLabel.textContent = 'Sous-total : ';
-        
+        let sousTotalValue = forfait;
+        subTotalLabel.textContent = 'Sous-total : ' + sousTotalValue.toFixed(2) + ' €';
+        div.appendChild(subTotalLabel);
+
+
 
         container.appendChild(div);
     }
