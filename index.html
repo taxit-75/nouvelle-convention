@@ -29,15 +29,22 @@
                 div.appendChild(document.createElement('br'));
                 
                 //Nuit / Week-end / Férié
-                const checkbox1 = document.createElement('input');
-                checkbox1.type = 'checkbox';                
-                div.appendChild(checkbox1);
-                const nuitText = document.createElement('input');
-                nuitText.type = 'text';
-                nuitText.textContent = 'Nuit / Week-end / Férié';
-                div.appendChild(nuitText);                
+                const nuitInput = document.createElement('input');
+                nuitInput.type = 'checkbox';
+                const nuitLabel = document.createElement('label');                
+                nuitLabel.textContent = 'Nuit / Week-end / Férié';
+                div.appendChild(nuitInput);
+                div.appendChild(nuitLabel);                
                 
                 div.appendChild(document.createElement('br'));
+
+                //Retour à vide (hospitalisation)
+                const hospitalisationInput = document.createElement('input');
+                hospitalisationInput.type = 'checkbox';
+                const hospitalisationLabel = document.createElement('label');                
+                hospitalisationLabel.textContent = 'Retour à vide (hospitalisation)';
+                div.appendChild(hospitalisationInput);
+                div.appendChild(hospitalisationLabel);  
                 
                 container.appendChild(div);
             }
