@@ -56,7 +56,37 @@ function createPassenger() {
         const subTotalLabel = document.createElement('label'); 
         const kilometrage = (distanceInput.value - 4) * taux || 0;
         const forfaitAireMetropolitaine = metropolitaineInput.checked ? 15 : 0;
-        let sousTotalValue = forfait + kilometrage + forfaitAireMetropolitaine;       
+        let sousTotalValue = forfait + kilometrage + forfaitAireMetropolitaine; //initialize sous total
+        
+        if (document.getElementById('nuitInput').checked) {
+            const additionalChargeNuit = total * 0.5; // Add 50% to total
+            sousTotalValue += additionalChargeNuit;
+        }
+    
+        if (hospitalisationInput.checked && !nuitInput.checked) {
+            if (kilometrage >= 50) {
+                const additionalChargeKilometrage = kilometrage * 0.50; // Add 50% for kilometrage over 50
+                sousTotalValue += additionalChargeKilometrage;
+            }
+            else {
+                const additionalChargeRetour = kilometrage * 0.25; // Add 25% for kilometrage under 50
+                sousTotalValue += additionalChargeRetour;
+            }
+        }
+
+        if (numberOfPassengers === 2) {
+            const reduction = sousTotalValue * 0.23; // 23% reduction for 2 passengers 
+            sousTotalValue -= reduction;
+        }
+        else if (numberOfPassengers === 3) {
+            const reduction = sousTotalValue * 0.35; // 35% reduction for 3 passengers
+            sousTotalValue -= reduction;
+        }
+        else if (numberOfPassengers >= 4) {
+            const reduction = sousTotalValue * 0.37; // 37% reduction for 4 or more passengers
+            sousTotalValue -= reduction;
+        }
+        
         subTotalLabel.textContent = 'Sous-total : ' + sousTotalValue + ' €';
         div.appendChild(subTotalLabel);
 
