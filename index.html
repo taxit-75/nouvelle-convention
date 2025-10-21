@@ -18,19 +18,20 @@
                 
                 div.appendChild(document.createElement('br'));
 
+                //Distance (en km) :
                 const numberInput = document.createElement('input');
                 numberInput.type = 'Distance (en km)';
                 numberInput.textContent = 'Entrez un nombre';
-                div.appendChild(numberInput);
+                div.appendChild(numberInput);                
                 
-                const lineBreak1 = document.createElement('br');
-                div.appendChild(lineBreak1);
+                div.appendChild(document.createElement('br'));
                 
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                div.appendChild(checkbox);
+                //Nuit / Week-end / Férié
+                const checkbox1 = document.createElement('input');
+                checkbox1.type = 'checkbox';
+                checkbox1.textContent = 'Nuit / Week-end / Férié';
+                div.appendChild(checkbox1);                
                 
-                // const lineBreak2 = document.createElement('br');
                 div.appendChild(document.createElement('br'));
                 
                 container.appendChild(div);
