@@ -8,12 +8,52 @@
 </head>
 <body>
     <header>
-        <h1>Bienvenue sur notre service de réservation de taxi</h1>
+        <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
     </header>
     <main>
         <section>
-            <h2>Réservez votre taxi</h2>
+            <!-- <h2>Réservez votre taxi</h2> -->
             <form id="reservation-form">
+                <label for="department">Département:</label>
+                <select id="department" name="department" required>
+                    <option value="01">Ain</option>
+                    <option value="02">Aisne</option>
+                    <option value="03">Allier</option>
+                </select>
+                
+                <label for="passengers">Nombre de passagers:</label>
+                <input type="number" id="passengers" name="passengers" min="1" required>
+
+                <button type="button" style="background-color: blue; color: white;">Générer les formulaires</button>
+
+                <div id="passenger-forms"></div>
+
+                <script>
+                    document.getElementById('passengers').addEventListener('input', function() {
+                        const numberOfPassengers = this.value;
+                        const passengerFormsContainer = document.getElementById('passenger-forms');
+                        passengerFormsContainer.innerHTML = ''; // Clear previous forms
+
+                        for (let i = 1; i <= numberOfPassengers; i++) {
+                            const passengerLabel = document.createElement('label');
+                            passengerLabel.textContent = `Passager ${i}:`;
+                            const passengerInput = document.createElement('input');
+                            passengerInput.type = 'text';
+                            passengerInput.name = `passenger${i}`;
+                            passengerInput.required = true;
+
+                            passengerFormsContainer.appendChild(passengerLabel);
+                            passengerFormsContainer.appendChild(passengerInput);
+                            passengerFormsContainer.appendChild(document.createElement('br'));
+                        }
+                    });
+                </script>
+                
+                
+                <br>
+                <button type="button" style="background-color: blue; color: white;">Calculer</button>
+                
+
                 <label for="name">Nom:</label>
                 <input type="text" id="name" name="name" required>
 
