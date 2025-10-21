@@ -1,7 +1,7 @@
 function createPassenger() {
-    const numberOfPassengers = document.getElementById('passenger').value;
-    const forfait = 13;
     const taux = parseFloat(document.getElementById('taux').value) || 1.22;
+    const forfait = 13;
+    const numberOfPassengers = document.getElementById('passenger').value;
     const container = document.getElementById('passengerDivs');
     container.innerHTML = ''; // Clear previous divs
 
