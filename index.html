@@ -22,7 +22,7 @@
                         <input type="checkbox" id="retour" onclick="calculateSubtotals()"> Retour à vide (hospitalisation)
                     </label><br>
                     <label>
-                        <input type="checkbox" id="metropolitaine" onclick="calculateSubtotals()"> Forfait aire métropolitaine (+15 €)
+                        <input type="checkbox" class="champs3" onclick="calculateSubtotals()"> Forfait aire métropolitaine (+15 €)
                     </label><br>
                     <input type="number" class="champs2" placeholder="Champ 2" />
                     <span class="subtotal">Sous-total: 0</span>
@@ -32,16 +32,26 @@
         }
 
         function calculateSubtotals() {
-            const distances = document.querySelectorAll('.distances');
+            const distances = document.querySelectorAll('.distances');            
+
             const champs2 = document.querySelectorAll('.champs2');
+
+            const champs3 = document.querySelectorAll('.champs3');
+
             const subtotals = document.querySelectorAll('.subtotal');
             let total = 0;
 
             distances.forEach((distance, index) => {
-                const value1 = parseFloat(distance.value) || 0;
+                const value1 = parseFloat(distance.value) || 0;                
+
                 const value2 = parseFloat(champs2[index].value) || 0;
-                const subtotal = value1 + value2;
+
+                const value3 = champs3[index].checked ? 15 : 0;
+
+                const subtotal = value1 + value2 + value3;
+
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
+
                 total += subtotal;
             });
 
@@ -51,7 +61,7 @@
 </head>
 <body>
     <h1>Calculateur de Passagers</h1>
-    <h2>version 1.0.2</h2>
+    <h2>version 1.0.3</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
