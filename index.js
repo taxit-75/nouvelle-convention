@@ -36,7 +36,9 @@ function calculateSubtotals() {
     let total = 0;
 
     distances.forEach((distance, index) => {
-        const distanceValue = (parseFloat(distance.value) - 4) * taux || 0;
+        
+        const distanceValue = parseFloat(distance.value) < 4 ? 0 : (parseFloat(distance.value) - 4) * taux;     
+           
         const metropolitaineValue = metropolitaine[index].checked ? 15 : 0;
 
         let subtotal = forfait + distanceValue + metropolitaineValue;
