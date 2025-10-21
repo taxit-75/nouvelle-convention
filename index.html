@@ -23,18 +23,20 @@
                 distanceText.type = 'text';
                 distanceText.textContent = 'Distance (en km) : ';
                 div.appendChild(distanceText);
-                const distanceNumber = document.createElement('input');
-                distanceNumber.type = 'number';
-                distanceNumber.textContent = 'Distance (en km)';
-                div.appendChild(distanceNumber);                
+                // const distanceNumber = document.createElement('input');
+                // distanceNumber.type = 'number';                
+                // div.appendChild(distanceNumber);                
                 
                 div.appendChild(document.createElement('br'));
                 
                 //Nuit / Week-end / Férié
                 const checkbox1 = document.createElement('input');
-                checkbox1.type = 'checkbox';
-                checkbox1.textContent = 'Nuit / Week-end / Férié';
-                div.appendChild(checkbox1);                
+                checkbox1.type = 'checkbox';                
+                div.appendChild(checkbox1);
+                const nuitText = document.createElement('input');
+                nuitText.type = 'text';
+                nuitText.textContent = 'Nuit / Week-end / Férié';
+                div.appendChild(nuitText);                
                 
                 div.appendChild(document.createElement('br'));
                 
