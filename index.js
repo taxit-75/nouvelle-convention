@@ -52,6 +52,11 @@ function createPassenger() {
 
         div.appendChild(document.createElement('br'));
 
+        //sous total
+        const subTotalLabel = document.createElement('label');
+        subTotalLabel.textContent = 'Sous-total : ';
+        
+
         container.appendChild(div);
     }
 }
