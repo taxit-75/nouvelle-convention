@@ -1,91 +1,30 @@
-<style>
-    body {
-        background-image: url('background.png');
-        background-size: cover;
-        background-position: center;
-    }
-</style>
-
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Réservation de Taxi</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Calculateur de Checkbox</title>
+    <script>
+        function calculate() {
+            const checkbox1 = document.getElementById('checkbox1').checked ? 10 : 0;
+            const checkbox2 = document.getElementById('checkbox2').checked ? 20 : 0;
+            const checkbox3 = document.getElementById('checkbox3').checked ? 30 : 0;
+            const total = checkbox1 + checkbox2 + checkbox3;
+            document.getElementById('result').innerText = 'Total: ' + total;
+        }
+    </script>
 </head>
 <body>
-    <header>
-        <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
-    </header>
-    <main>
-        <section>
-            <!-- <h2>Réservez votre taxi</h2> -->
-            <form id="reservation-form">
-                <label for="department">Département:</label>
-                <select id="department" name="department" required>
-                    <option value="01">Ain</option>
-                    <option value="02">Aisne</option>
-                    <option value="03">Allier</option>
-                </select>
-                <br>
-                <label for="passengers">Nombre de passagers:</label>
-                <input type="number" id="passengers" name="passengers" min="1" required>
-
-                <!-- <button type="button" style="background-color: blue; color: white;">Générer les formulaires</button> -->
-
-                <div id="passenger-forms"></div>
-
-                <div style="border: 1px solid black; padding: 10px; margin-top: 10px;">
-                
-                <script>
-                    document.getElementById('passengers').addEventListener('input', function() {
-                        const numberOfPassengers = this.value;
-                        const passengerFormsContainer = document.getElementById('passenger-forms');
-                        passengerFormsContainer.innerHTML = ''; // Clear previous forms
-
-                        for (let i = 1; i <= numberOfPassengers; i++) {
-                            const passengerLabel = document.createElement('label');
-                            passengerLabel.textContent = `Passager ${i}:`;
-                            const passengerInput = document.createElement('input');
-                            passengerInput.type = 'text';
-                            passengerInput.name = `passenger${i}`;
-                            passengerInput.required = true;
-
-                            passengerFormsContainer.appendChild(passengerLabel);
-                            passengerFormsContainer.appendChild(passengerInput);
-                            passengerFormsContainer.appendChild(document.createElement('br'));
-                        }
-                    });
-                </script>
-                
-                
-                <br>
-                <button type="button" style="background-color: blue; color: white;">Calculer</button>
-                
-
-                <label for="name">Nom:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="pickup">Lieu de prise en charge:</label>
-                <input type="text" id="pickup" name="pickup" required>
-
-                <label for="dropoff">Lieu de dépose:</label>
-                <input type="text" id="dropoff" name="dropoff" required>
-
-                <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
-
-                <label for="time">Heure:</label>
-                <input type="time" id="time" name="time" required>
-
-                <button type="submit">Réserver</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2023 Convention Taxi. Tous droits réservés.</p>
-    </footer>
+    <h1>Calculateur de Checkbox</h1>
+    <label>
+        <input type="checkbox" id="checkbox1" onclick="calculate()"> Option 1 (10)
+    </label><br>
+    <label>
+        <input type="checkbox" id="checkbox2" onclick="calculate()"> Option 2 (20)
+    </label><br>
+    <label>
+        <input type="checkbox" id="checkbox3" onclick="calculate()"> Option 3 (30)
+    </label><br>
+    <h2 id="result">Total: 0</h2>
 </body>
 </html>
