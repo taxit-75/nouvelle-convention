@@ -39,6 +39,7 @@
             const subtotals = document.querySelectorAll('.subtotal');
             const taux = parseFloat(document.getElementById('taux').value) || 1.22;
             const forfait = parseFloat(document.getElementById('forfait').value) || 13;
+            const numberOfPassengers = document.getElementById('passengerCount').value;
 
             let total = 0;
 
@@ -59,6 +60,16 @@
                     }
                 }
 
+                if (numberOfPassengers == 2) {
+                    subtotal *= 0.77; // Reduce subtotal by 23%
+                }
+                else if  (numberOfPassengers == 3) {
+                    subtotal *= 0.65; // Reduce subtotal by 35%
+                }
+                else if  (numberOfPassengers >= 4) {
+                    subtotal *= 0.63; // Reduce subtotal by 35%
+                } 
+
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
                 total += subtotal;
             });
@@ -70,7 +81,7 @@
 
 <body>
     <h1>Calculateur de Passagers</h1>
-    <h2>version 1.0.8</h2>
+    <h2>version 1.0.9</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
