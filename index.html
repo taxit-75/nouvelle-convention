@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,23 +14,8 @@
                 const div = document.createElement('div');
                 div.innerHTML = `
                     <h3>Passager ${i + 1}</h3>
-                    <label>
-                        Nombre de passagers1 : <input type="number" id="numberOfPassengers1" value="1" min="1" max="8"
-                            onchange="calculateSubtotals()" required>
-                    </label><br>
-                    <label>
-                        Nombre de passagers2 : <input type="number" id="numberOfPassengers2" value="1" min="1" max="8"
-                            onchange="calculateSubtotals()" required>
-                    </label><br>
-                    <label>
-                        <input type="checkbox" id="nuit" onclick="calculateSubtotals()"> Nuit / Week-end / Férié
-                    </label><br>
-                    <label>
-                        <input type="checkbox" id="retour" onclick="calculateSubtotals()"> Retour à vide (hospitalisation)
-                    </label><br>
-                    <label>
-                        <input type="checkbox" id="metropolitaine" onclick="calculateSubtotals()"> Forfait aire métropolitaine (+15 €)
-                    </label><br>
+                    <input type="number" class="champs1" placeholder="Champ 1" />
+                    <input type="number" class="champs2" placeholder="Champ 2" />
                     <span class="subtotal">Sous-total: 0</span>
                 `;
                 container.appendChild(div);
@@ -39,9 +23,8 @@
         }
 
         function calculateSubtotals() {
-            const champs1 = document.getElementById('numberOfPassengers1').value;
-            const champs2 = document.getElementById('numberOfPassengers2').value;
-            
+            const champs1 = document.querySelectorAll('.champs1');
+            const champs2 = document.querySelectorAll('.champs2');
             const subtotals = document.querySelectorAll('.subtotal');
             let total = 0;
 
@@ -57,7 +40,6 @@
         }
     </script>
 </head>
-
 <body>
     <h1>Calculateur de Passagers</h1>
     <label for="passengerCount">Nombre de passagers:</label>
@@ -66,5 +48,4 @@
     <button onclick="calculateSubtotals()">Calculer les sous-totaux</button>
     <h2 id="total">Total: 0</h2>
 </body>
-
 </html>
