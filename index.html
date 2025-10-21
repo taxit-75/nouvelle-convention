@@ -1,53 +1,91 @@
+<style>
+    body {
+        background-image: url('background.png');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+
+
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculateur de Checkbox</title>
-    <script src="script.js"></script> <!-- External JavaScript file -->
-    </script>
+    <title>Réservation de Taxi</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
-<script>
-    function createPassengerBodies() {
-        const numberOfPassengers = document.getElementById('numberOfPassengers').value;
-        const bodyContainer = document.createElement('div');
-
-        for (let i = 0; i < numberOfPassengers; i++) {
-            const passengerBody = document.createElement('div');
-            passengerBody.innerHTML = `<h3>Passager ${i + 1}</h3>`;
-            bodyContainer.appendChild(passengerBody);
-        }
-
-        document.body.appendChild(bodyContainer);
-    }
-
-    document.getElementById('numberOfPassengers').addEventListener('change', createPassengerBodies);
-</script>
-
 <body>
-    <!-- <h1>Calculateur de Checkbox</h1> -->
-    <label>
-        Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
-    </label><br>
-    <label>
-        Nombre de passagers : <input type="number" id="numberOfPassengers" value="1" min="1" max="8"
-            onchange="calculate()" required>
-    </label><br>
-    <div style="background-color: white; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-        <label>
-            Distance (en km): <input type="number" id="kilometrage" onchange="calculate()">
-        </label><br>
-        <label>
-            <input type="checkbox" id="nuit" onclick="calculate()"> Nuit / Week-end / Férié
-        </label><br>
-        <label>
-            <input type="checkbox" id="retour" onclick="calculate()"> Retour à vide (hospitalisation)
-        </label><br>
-        <label>
-            <input type="checkbox" id="metropolitaine" onclick="calculate()"> Forfait aire métropolitaine (+15 €)
-        </label><br>
-    </div>
-    <h2 id="result">Total: 0</h2>
+    <header>
+        <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
+    </header>
+    <main>
+        <section>
+            <!-- <h2>Réservez votre taxi</h2> -->
+            <form id="reservation-form">                
+                <label>
+                    Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculate()" required>
+                </label><br>
+                <label>
+                    Nombre de passagers : <input type="number" id="numberOfPassengers" value="1" min="1" max="8" onchange="calculate()" required>
+                </label><br>
+                
+
+                <!-- <button type="button" style="background-color: blue; color: white;">Générer les formulaires</button> -->
+
+                <div id="passenger-forms"></div>
+
+                <div style="border: 1px solid black; padding: 10px; margin-top: 10px;">
+                
+                
+                <script>
+                    document.getElementById('passengers').addEventListener('input', function() {
+                                
+                        const numberOfPassengers = this.value;
+                        const passengerFormsContainer = document.getElementById('passenger-forms');
+                        passengerFormsContainer.innerHTML = ''; // Clear previous forms
+
+                        for (let i = 1; i <= numberOfPassengers; i++) {
+                            const passengerLabel = document.createElement('label');
+                            passengerLabel.textContent = `Passager ${i}:`;
+                            const passengerInput = document.createElement('input');
+                            passengerInput.type = 'text';
+                            passengerInput.name = `passenger${i}`;
+                            passengerInput.required = true;
+
+                            passengerFormsContainer.appendChild(passengerLabel);
+                            passengerFormsContainer.appendChild(passengerInput);
+                            passengerFormsContainer.appendChild(document.createElement('br'));
+                        }
+                    });
+                </script>
+                
+                
+                <br>
+                <button type="button" style="background-color: blue; color: white;">Calculer</button>
+                
+
+                <!-- <label for="name">Nom:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="pickup">Lieu de prise en charge:</label>
+                <input type="text" id="pickup" name="pickup" required>
+
+                <label for="dropoff">Lieu de dépose:</label>
+                <input type="text" id="dropoff" name="dropoff" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Heure:</label>
+                <input type="time" id="time" name="time" required>
+
+                <button type="submit">Réserver</button> -->
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Convention Taxi. Tous droits réservés.</p>
+    </footer>
 </body>
+</html>
