@@ -8,12 +8,10 @@
         function calculate() {
             const forfait = 13;
 
-            const kilometrage = (document.getElementById('kilometrage').value -4) * 1.13 || 0;
+            const kilometrage = (document.getElementById('kilometrage').value - 4) * 1.13 || 0;
 
             const checkboxForfaitAireMetropolitaine = document.getElementById('metropolitaine').checked ? 15 : 0;
 
-            // const checkboxNuit = document.getElementById('nuit').checked ? 0.5 * (kilometrage - 4) * 1.13 : 0; // 50% if checked 
-            
             let total = forfait + kilometrage + checkboxForfaitAireMetropolitaine; // Initialize total
 
             if (document.getElementById('nuit').checked) {
@@ -21,16 +19,13 @@
                 total += additionalChargeNuit;
             }
 
-            // const checkboxRetour = document.getElementById('retour').checked ? 20 : 0;
-
             if (document.getElementById('retour').checked && !document.getElementById('nuit').checked) {
                 const additionalChargeRetour = kilometrage * 0.25; // Add 25% to total
                 total += additionalChargeRetour;
             }
+
+            total = total.toFixed(2); // Round total to 2 decimal places
             
-            // const total = forfait + (kilometrage - 4) * 1.13 + checkboxNuit + checkbox2 + checkbox3; // Include checkboxNuit in total
-            
-            // const total = forfait + (kilometrage - 4) * 1.13
             document.getElementById('result').innerText = 'Total: ' + total;
         }
     </script>
