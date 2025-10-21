@@ -19,13 +19,12 @@
                 div.appendChild(document.createElement('br'));
 
                 //Distance (en km) :
-                const distanceText = document.createElement('input');
-                distanceText.type = 'text';
-                distanceText.textContent = 'Distance (en km) : ';
-                div.appendChild(distanceText);
-                // const distanceNumber = document.createElement('input');
-                // distanceNumber.type = 'number';                
-                // div.appendChild(distanceNumber);                
+                const distanceLabel = document.createElement('label');                
+                distanceLabel.textContent = 'Distance (en km) : ';                
+                const distanceInput = document.createElement('input');
+                distanceInput.type = 'number'; 
+                div.appendChild(distanceLabel);               
+                div.appendChild(distanceInput);                
                 
                 div.appendChild(document.createElement('br'));
                 
