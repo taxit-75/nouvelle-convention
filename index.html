@@ -32,60 +32,22 @@
         }
 
         function calculateSubtotals() {
-
-            let taux = parseFloat(document.getElementById('taux').value) || 1.22;
-
-            const forfait = parseFloat(document.getElementById('forfait').value) || 13;
-
             const distances = document.querySelectorAll('.distances');
-
-            const nuit = document.querySelectorAll('.nuit');
-
-            const retour = document.querySelectorAll('.retour');
 
             const metropolitaine = document.querySelectorAll('.metropolitaine');
 
             const subtotals = document.querySelectorAll('.subtotal');
 
+            const forfait = parseFloat(document.getElementById('forfait').value) || 13;
+
             let total = 0;
 
             distances.forEach((distance, index) => {
-                // const distanceValue = parseFloat(distance.value) || 0;
-
-                const distanceValue = (parseFloat(distance.value) - 4) * taux || 0;
+                const distanceValue = parseFloat(distance.value) || 0;
 
                 const metropolitaineValue = metropolitaine[index].checked ? 15 : 0;
 
-                const subtotal = forfait + distanceValue + metropolitaineValue; // Initialize total
-
-                if (nuit[index].checked) {
-                    const additionalChargeNuit = subtotal * 0.5; // Add 50% to total
-                    subtotal += additionalChargeNuit;
-                }
-
-                if (retour[index].checked && !nuit[index].checked) {
-                    if (distanceValue >= 50) {
-                        const additionalChargeKilometrage = distanceValue * 0.50; // Add 50% for kilometrage over 50
-                        subtotal += additionalChargeKilometrage;
-                    }
-                    else {
-                        const additionalChargeRetour = distanceValue * 0.25; // Add 25% for kilometrage under 50
-                        subtotal += additionalChargeRetour;
-                    }
-                }
-
-                if (numberOfPassengers === 2) {
-                    const reduction = subtotal * 0.23; // 23% reduction for 2 passengers 
-                    subtotal -= reduction;
-                }
-                else if (numberOfPassengers === 3) {
-                    const reduction = subtotal * 0.35; // 35% reduction for 3 passengers
-                    subtotal -= reduction;
-                }
-                else if (numberOfPassengers >= 4) {
-                    const reduction = subtotal * 0.37; // 37% reduction for 4 or more passengers
-                    subtotal -= reduction;
-                }
+                const subtotal = forfait + distanceValue + metropolitaineValue;
 
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
 
@@ -99,13 +61,12 @@
 
 <body>
     <h1>Calculateur de Passagers</h1>
-    <h2>version 1.0.6</h2>
+    <h2>version 1.0.5</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
     <label>
-        Forfait : <input type="number" id="forfait" value="13" min="1" max="20" onchange="calculateSubtotals()"
-            required>
+        Forfait : <input type="number" id="forfait" value="13" min="1" max="20" onchange="calculateSubtotals()" required>
     </label><br>
     <label>
         Nombre de passagers : <input type="number" id="passengerCount" value="1" min="1" max="8"
