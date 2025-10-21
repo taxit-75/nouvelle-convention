@@ -54,13 +54,10 @@
 
                 if (hospitalisation[index].checked && !nuit[index].checked) {
                     if (distanceValue >= 50) {
-                        const additionalChargeKilometrage = (distanceValue - 50) * 0.50; // Add 25% for kilometrage over 50
-                                                
+                        subtotal += 0.5 * distanceValue; // Add 50% of distanceValue
                     } else {
-                        // subtotal *= 1.25;
-                        const additionalChargeKilometrage = (distanceValue - 50) * 0.25; // Add 25% for kilometrage under 50                        
+                        subtotal += 0.25 * distanceValue; // Add 25% of distanceValue
                     }
-                    subtotal += additionalChargeKilometrage;
                 }
 
                 if (numberOfPassengers == 2) {
@@ -70,7 +67,7 @@
                     subtotal *= 0.65; // Reduce subtotal by 35%
                 }
                 else if (numberOfPassengers >= 4) {
-                    subtotal *= 0.63; // Reduce subtotal by 35%
+                    subtotal *= 0.63; // Reduce subtotal by 37%
                 }
 
                 subtotals[index].innerText = `Sous-total: ${subtotal}`;
@@ -84,7 +81,7 @@
 
 <body>
     <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
-    <h2>version 1.0.10</h2>
+    <h2>version 1.0.11</h2>
     <label>
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
