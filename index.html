@@ -22,14 +22,11 @@
             }
 
             // const checkboxRetour = document.getElementById('retour').checked ? 20 : 0;
-            
-            if (document.getElementById('retour').checked) {
-                const additionalChargeRetour = kilometrage * 0.25; // Add 50% to total
+
+            if (document.getElementById('retour').checked && !document.getElementById('nuit').checked) {
+                const additionalChargeRetour = kilometrage * 0.25; // Add 25% to total
                 total += additionalChargeRetour;
             }
-
-            
-            
             
             // const total = forfait + (kilometrage - 4) * 1.13 + checkboxNuit + checkbox2 + checkbox3; // Include checkboxNuit in total
             
