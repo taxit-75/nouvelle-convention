@@ -53,7 +53,7 @@ function createPassenger() {
         div.appendChild(document.createElement('br'));
 
         //sous total
-        let souTotal = 
+        // let souTotal = 
 
         container.appendChild(div);
     }
