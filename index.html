@@ -3,13 +3,7 @@
         background-image: url('background.png');
         background-size: cover;
         background-position: center;
-    }
-    /* input
-    {
-        height: 20px;
-        width: 100px;
-        font-size: 1.5em;
-    } */
+    }    
     label {
         font-size: 1.0em; /* Augmente la taille de la police des labels */
     }
@@ -29,10 +23,10 @@
     <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
     <h2>version 1.0.0</h2>
     <label>        
-        Taux : <input type="number" size="60" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
+        Taux : <input type="number" size="100" id="taux" value="1.22" min="1" max="2" step="0.1" onchange="calculateSubtotals()" required>
     </label><br>
     <label>
-        Forfait : <input type="number" size="60" id="forfait" value="13" min="1" max="20" onchange="calculateSubtotals()"
+        Forfait : <input type="number" size="100" id="forfait" value="13" min="1" max="20" onchange="calculateSubtotals()"
             required>
     </label><br>
     <label>
