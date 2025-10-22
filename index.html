@@ -4,6 +4,12 @@
         background-size: cover;
         background-position: center;
     }
+    input
+    {
+        height: 50px;
+        width: 300px;
+        font-size: 3.5em;
+    }
     label {
         font-size: 1.5em; /* Augmente la taille de la police des labels */
     }
@@ -22,8 +28,7 @@
 <body>
     <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
     <h2>version 1.0.0</h2>
-    <label>
-        
+    <label>        
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
     <label>
@@ -31,8 +36,17 @@
             required>
     </label><br>
     <label>
-        Nombre de passagers : <input type="number" id="passengerCount" value="0" min="0" max="8"
-            oninput="generatePassengerFields()" required>
+        Nombre de passagers : 
+        <select id="passengerCount" onchange="generatePassengerFields()" required>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+        </select>        
     </label><br>
     <div id="passengerContainer"></div>
     <h2 id="total">Total: 0</h2>
