@@ -4,6 +4,9 @@
         background-size: cover;
         background-position: center;
     }
+    label {
+        font-size: 1.5em; /* Augmente la taille de la police des labels */
+    }
 </style>
 
 <!DOCTYPE html>
@@ -20,6 +23,7 @@
     <h1>Simulateur Taxi Conventionné - Future Convention 2025-2029</h1>
     <h2>version 1.0.0</h2>
     <label>
+        
         Taux : <input type="number" id="taux" value="1.22" min="1" max="2" onchange="calculateSubtotals()" required>
     </label><br>
     <label>
